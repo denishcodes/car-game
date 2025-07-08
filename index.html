@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#game {
+  position: relative;
+  width: 400px;
+  height: 600px;
+  background: #333;
+  border: 5px solid white;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* Road Lane Lines */
+.road-line {
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  background: white;
+  opacity: 0.3;
+  top: 0;
+  animation: moveLane 1s linear infinite;
+}
+
+@keyframes moveLane {
+  0% { top: -100px; }
+  100% { top: 100%; }
+}
+
+/* 🚗 Racing Car Design */
+#car {
+  width: 50px;
+  height: 100px;
+  background: linear-gradient(to bottom, #ff1a1a, #990000);
+  position: absolute;
+  bottom: 20px;
+  left: 175px;
+  border-radius: 6px 6px 12px 12px;
+  border: 2px solid white;
+  box-shadow: 0 0 15px #ff4d4d;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Windshield (glass look) */
+#car::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 6px;
+  width: 38px;
+  height: 16px;
+  background: linear-gradient(to bottom, #cce6ff, #003366);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+/* Racing stripe */
+#car::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 23px;
+  width: 4px;
+  height: 100%;
+  background: white;
+  z-index: 0;
+}
+
+/* Headlights */
+.headlight {
+  width: 10px;
+  height: 10px;
+  background: yellow;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+}
+.left { left: 5px; }
+.right { right: 5px; }
+
+/* Wheels */
+.wheel {
+  width: 12px;
+  height: 12px;
+  background: black;
+  border: 2px solid gray;
+  border-radius: 50%;
+  position: absolute;
+}
+.front { bottom: 5px; left: 5px; }
+.back { bottom: 5px; right: 5px; }
+
+/* Obstacle */
+#obstacle {
+  width: 50px;
+  height: 100px;
+  background: orange;
+  position: absolute;
+  top: -120px;
+  left: 175px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px orange;
+}
+
+/* Info Panel */
+#info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  font-size: 13px;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  z-index: 3;
+}
+
+/* Game Over Screen */
+#gameOverScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#gameOverScreen h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+#gameOverScreen button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #ff3333;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+#gameOverScreen button:hover {
+  background: #cc0000;
+}
